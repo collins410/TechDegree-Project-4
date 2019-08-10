@@ -31,17 +31,19 @@ class Phrase {
 
   //Reveal the letter(s) on the board that match the player's selection.
   showMatchedLetter(letter) {
-    const keyboard = document.querySelectorAll('.key');
-    const letters = document.querySelectorAll(".hide, .letter");
-    for (let i = 0; i < keyboard.length; i++) {
-      keyboard[i].addEventListener('click', (e) => {
-        // finds the location of the letter in the string and returns the location
-        for (let i = 0; i < this.phrase.innerText.length; i++) {
-          if (this.phrase.innerText[i].indexOf(letter) > -1) {
-            letters[i].className = "show";
+      const keyboard = document.querySelectorAll('.key');
+      const letters = document.querySelectorAll(".hide, .letter");
+      for (let i = 0; i < keyboard.length; i++) {
+        keyboard[i].addEventListener('click', ()=> {
+          // finds the location of the letter in the string and returns the location
+          for (let i = 0; i < this.phrase.innerText.length; i++) {
+            if (this.phrase.innerText[i].indexOf(letter) > -1) {
+              letters[i].className = "show";
+            }
           }
-        }
-      });
-    }
+        })
+      }
   }
+
+
 }
