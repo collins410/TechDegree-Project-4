@@ -8,11 +8,11 @@ class Game {
     this.activePhrase = null;
   }
 
-  //Begins game by selecting a random phrase and displaying it to the user
+  //Begins game by selecting a random phrase and displaying blank tiles representing it to the user
   startGame() {
     document.getElementById('overlay').style.display =  'none';
-    const randomPhrase = game.getRandomPhrase();
-    const phrase = new Phrase(randomPhrase.phrase);
+    this.activePhrase = game.getRandomPhrase();
+    const phrase = new Phrase(this.activePhrase.phrase);
     phrase.addPhraseToDisplay();
   }
 
@@ -55,7 +55,6 @@ class Game {
 
   getRandomPhrase (){
     let randomNumber = Math.floor((Math.random() * 5));
-    this.activePhrase = this.phrases[randomNumber];
     return this.phrases[randomNumber];
   }
 

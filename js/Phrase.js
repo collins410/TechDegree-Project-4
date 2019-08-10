@@ -10,7 +10,7 @@ class Phrase {
   // Displays phrase on game board
   addPhraseToDisplay(){
     const position = document.getElementById('phrase-ul');
-    const string = this.phrase;
+    const string = game.activePhrase.phrase.toString();
     let letters = string.split('');
     let li = '';
     for(let i = 0; i < string.length; i++){
@@ -31,13 +31,14 @@ class Phrase {
 
   //Reveal the letter(s) on the board that match the player's selection.
   showMatchedLetter(letter) {
+    console.log(letter);
       const keyboard = document.querySelectorAll('.key');
       const letters = document.querySelectorAll(".hide, .letter");
       for (let i = 0; i < keyboard.length; i++) {
         keyboard[i].addEventListener('click', ()=> {
           // finds the location of the letter in the string and returns the location
-          for (let i = 0; i < this.phrase.innerText.length; i++) {
-            if (this.phrase.innerText[i].indexOf(letter) > -1) {
+          for (let i = 0; i < game.activePhrase.innerText.length; i++) {
+            if (game.activePhrase.innerText[i].indexOf(letter) > -1) {
               letters[i].className = "show";
             }
           }
