@@ -7,7 +7,7 @@ class Phrase {
     this.phrase = phrase.toLowerCase();
   }
 
-  // Displays phrase on game board
+  // Displays the starting phrase on game board
   addPhraseToDisplay(){
     const position = document.getElementById('phrase-ul');
     const string = game.activePhrase.phrase.toString();
@@ -26,25 +26,16 @@ class Phrase {
   //Check to see if the letter selected by the player matches a letter in the phrase
   checkLetter(letter){
     // finds the location of the letter in the string and returns true if found or false if not found
-    return (game.activePhrase.innerText.indexOf(letter)> -1)
+    return (game.activePhrase.phrase.indexOf(letter) > -1)
   }
 
-  //Reveal the letter(s) on the board that match the player's selection.
+  //Reveal the letter(s) on the board that match the letter selected by the player.
   showMatchedLetter(letter) {
-    console.log(letter);
-      const keyboard = document.querySelectorAll('.key');
-      const letters = document.querySelectorAll(".hide, .letter");
-      for (let i = 0; i < keyboard.length; i++) {
-        keyboard[i].addEventListener('click', ()=> {
-          // finds the location of the letter in the string and returns the location
-          for (let i = 0; i < game.activePhrase.innerText.length; i++) {
-            if (game.activePhrase.innerText[i].indexOf(letter) > -1) {
-              letters[i].className = "show";
-            }
-          }
-        })
+    const hiddenLetters = document.querySelectorAll(".hide, .letter");
+    for (let i = 0; i < hiddenLetters.length; i++) {
+      if (hiddenLetters[i].innerText.indexOf(letter) > -1) {
+        hiddenLetters[i].className = "show";
       }
+    }
   }
-
-
 }
