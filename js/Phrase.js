@@ -7,7 +7,7 @@ class Phrase {
     this.phrase = phrase.toLowerCase();
   }
 
-  // Displays the starting phrase on game board
+  // Displays the starting phrase on the game board
   addPhraseToDisplay(){
     const position = document.getElementById('phrase-ul');
     const string = game.activePhrase.phrase.toString();

@@ -54,6 +54,10 @@ class Game {
     }
   }
 
+  //Resets the game following a win or loss
+  //All keyboard keys are reset
+  //All hearts are restored
+  //The phrase is removed from the HTML and screen
   gameReset() {
     const phraseLi = document.getElementById('phrase-ul');
     const chosenLetters = document.querySelectorAll(".chosen");
@@ -73,6 +77,7 @@ class Game {
     }
   }
 
+  //Holds the phrases to be called randomly
   createPhrases() {
     return [
       {
@@ -96,10 +101,6 @@ class Game {
       }
     ]
   }
-
-
-
-
 
   //Check to see if the player has revealed all of the letters in the active phrase
   checkForWin (){

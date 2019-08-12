@@ -4,6 +4,8 @@
 
 let game;
 
+//Adds an event listener to the start button allowing the game to begin
+//within this event listener is another listener added to monitor each key being pressed on the onscreen keyboard
 const button = document.getElementById('btn__reset');
 const keyboard = document.querySelectorAll('.key');
 button.addEventListener('click', () => {
