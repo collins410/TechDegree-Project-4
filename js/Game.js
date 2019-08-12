@@ -15,6 +15,28 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
   }
 
+  //gets a random phrase from the phrase array
+  getRandomPhrase (){
+    let randomNumber = Math.floor((Math.random() * 5));
+    return this.phrases[randomNumber];
+  }
+
+  //Handles the actions to take when a player clicks on a letter on the keyboard
+  handleInteraction (button) {
+    const wrongLetters = Array.from(document.querySelectorAll('.wrong'));
+    let wrongLetter = wrongLetters.find(letter => letter === button);
+    if (wrongLetter === button) {
+      return button;
+    } else if (game.activePhrase.checkLetter(button.innerText)) {
+      button.className = 'chosen';
+      game.activePhrase.showMatchedLetter(button.innerText);
+      this.checkForWin();
+    } else {
+      button.className = 'wrong';
+      this.removeLife();
+    }
+  }
+
   //Displays the original start screen and updates it to display a win or loss message
   gameOver(gameWon) {
     let overLay = document.getElementById('overlay');
@@ -33,6 +55,7 @@ class Game {
   }
 
   gameReset() {
+    console.log('game reset was called');
     const phraseLi = document.getElementById('phrase-ul');
     const chosenLetters = document.querySelectorAll(".chosen");
     const wrongLetters = document.querySelectorAll(".wrong");
@@ -43,8 +66,8 @@ class Game {
     for (let i = 0; i < chosenLetters.length; i++) {
         chosenLetters[i].className = 'key';
     }
-    for (let i = 0; i < this.missed; i++) {
-          wrongLetters[i].className = 'key';
+    for (let i = 0; i < wrongLetters.length; i++) {
+    wrongLetters[i].className = 'key';
     }
     for (let i = 0; i < hearts.length; i++) {
         hearts[i].firstChild.src = 'images/liveHeart.png';
@@ -75,25 +98,9 @@ class Game {
     ]
   }
 
-  getRandomPhrase (){
-    let randomNumber = Math.floor((Math.random() * 5));
-    return this.phrases[randomNumber];
-  }
 
-  handleInteraction (button) {
-    const wrongLetters = Array.from(document.querySelectorAll('.wrong'));
-    let wrongLetter = wrongLetters.find( letter => letter === button);
-    if (wrongLetter === button) {
-      return button;
-    } else if (game.activePhrase.checkLetter(button.innerText)) {
-      button.className = 'chosen';
-      game.activePhrase.showMatchedLetter(button.innerText);
-      this.checkForWin();
-    } else {
-      button.className = 'wrong';
-      this.removeLife();
-    }
-  }
+
+
 
   //Check to see if the player has revealed all of the letters in the active phrase
   checkForWin (){
