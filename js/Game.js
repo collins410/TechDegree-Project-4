@@ -55,7 +55,6 @@ class Game {
   }
 
   gameReset() {
-    console.log('game reset was called');
     const phraseLi = document.getElementById('phrase-ul');
     const chosenLetters = document.querySelectorAll(".chosen");
     const wrongLetters = document.querySelectorAll(".wrong");
