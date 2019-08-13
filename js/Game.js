@@ -81,11 +81,11 @@ class Game {
   createPhrases() {
     return [
       {
-        phrase: 'it is better to have it and not need it than to not have it and need it'
+        phrase: 'dream big'
       }
       ,
       {
-        phrase: 'better to be safe than sorry'
+        phrase: 'boldness be my friend'
       }
       ,
       {
@@ -97,7 +97,7 @@ class Game {
       }
       ,
       {
-        phrase: 'if at first you do not succeed try and try again'
+        phrase: 'I can and I will'
       }
     ]
   }
